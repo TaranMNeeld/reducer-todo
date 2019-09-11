@@ -1,15 +1,13 @@
-import React, { useReducer } from "react";
-import { initialState, todoReducer } from "../reducers/todoReducer";
+import React from "react";
 import "./Todo.css";
 
-export const Todo = () => {
-    const [state, dispatch] = useReducer(todoReducer, initialState);
+export const Todo = props => {
     return (
         <div
-            className={`${state.completed ? "completed" : ""}`}
-            onClick={() => dispatch({ type: "TOGGLE_COMPLETED", payload: state.completed })}
+            className={`${props.completed ? "completed" : ""}`}
+            onClick={() => {props.markComplete(props.id)}}
         >
-            <p>{state.item}</p>
+            <p>{props.item}</p>
         </div>
     );
 };
